@@ -1,9 +1,9 @@
 const seedGames = [
-  {id: 1, name: 'The Last of Us Part I', platform: 'PS5', category: 'Ação', condition: 'Novo', price: 349.9, stock: 15, icon: 'TLOU', image: 'https://image.api.playstation.com/vulcan/ap/rnd/202206/0711/cE0cFOhuw3GkYh2L8KEDtXeb.png'},
+  {id: 1, name: 'The Last of Us Part I', platform: 'PS5', category: 'Ação', condition: 'Novo', price: 349.9, stock: 15, icon: 'TLOU', image: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1888930/header.jpg'},
   {id: 2, name: 'Elden Ring', platform: 'PC', category: 'RPG', condition: 'Novo', price: 249.9, stock: 8, icon: 'ER', image: 'https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/aGhopp3MHppi7kooGE2Dtt8C.png'},
   {id: 3, name: 'Mario Kart 8 Deluxe', platform: 'Switch', category: 'Corrida', condition: 'Usado', price: 299.9, stock: 3, icon: 'MK8', image: 'https://assets.nintendo.com/image/upload/ar_3:4,c_pad,dpr_2.0,f_auto,q_auto,w_400/b_white/v1/ncom/en_US/games/switch/m/mario-kart-8-deluxe-switch/hero'},
-  {id: 4, name: 'Red Dead Redemption 2', platform: 'Xbox', category: 'Aventura', condition: 'Usado', price: 149.9, stock: 5, icon: 'RDR2', image: 'https://image.api.playstation.com/vulcan/ap/rnd/202011/1717/FtzGtcRXXTUX5RkQZqPjok1u.png'},
-  {id: 5, name: 'Cyberpunk 2077', platform: 'PS5', category: 'Ação', condition: 'Novo', price: 199.9, stock: 12, icon: 'CP77', image: 'https://image.api.playstation.com/vulcan/ap/rnd/202111/3013/cYZJwm0FmD9Tj0YqP2vBEMx9.png'},
+  {id: 4, name: 'Red Dead Redemption 2', platform: 'Xbox', category: 'Aventura', condition: 'Usado', price: 149.9, stock: 5, icon: 'RDR2', image: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg'},
+  {id: 5, name: 'Cyberpunk 2077', platform: 'PS5', category: 'Ação', condition: 'Novo', price: 199.9, stock: 12, icon: 'CP77', image: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg'},
 ];
 
 const read = (key, fallback) => { try { const value = localStorage.getItem(key); return value ? JSON.parse(value) : fallback; } catch { return fallback; } };
@@ -11,10 +11,10 @@ const write = (key, value) => { localStorage.setItem(key, JSON.stringify(value))
 const money = value => Number(value).toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
 
 let state = {
-  user: read('fg_user_v2', null),
-  games: read('fg_games_v2', seedGames),
-  cart: read('fg_cart_v2', []),
-  orders: read('fg_orders_v2', []),
+  user: read('fg_user_v3', null),
+  games: read('fg_games_v3', seedGames),
+  cart: read('fg_cart_v3', []),
+  orders: read('fg_orders_v3', []),
   view: 'store',
   platformFilter: 'Todos',
   categoryFilter: 'Todos',
@@ -25,10 +25,10 @@ let state = {
 
 function setState(updates) {
   state = { ...state, ...updates };
-  write('fg_user_v2', state.user);
-  write('fg_games_v2', state.games);
-  write('fg_cart_v2', state.cart);
-  write('fg_orders_v2', state.orders);
+  write('fg_user_v3', state.user);
+  write('fg_games_v3', state.games);
+  write('fg_cart_v3', state.cart);
+  write('fg_orders_v3', state.orders);
   render();
 }
 
