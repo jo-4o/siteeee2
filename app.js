@@ -311,7 +311,7 @@ function createCart() {
     }
     const order = {
       id: Date.now(),
-      number: \`FG-\${String(Date.now()).slice(-5)}\`,
+      number: `FG-${String(Date.now()).slice(-5)}`,
       customer: state.user.name,
       email: state.user.email,
       address: state.cartForm.address,
@@ -326,7 +326,7 @@ function createCart() {
       cartForm: {address:'', phone:''},
       view: 'store'
     });
-    showNotice(\`Pedido \${order.number} gerado com sucesso!\`);
+    showNotice(`Pedido ${order.number} gerado com sucesso!`);
   };
 
   return sec;
